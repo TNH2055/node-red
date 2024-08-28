@@ -1,0 +1,828 @@
+[
+    {
+        "id": "6b46fcddd8f3f780",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "debug-node",
+        "type": "debug",
+        "z": "6b46fcddd8f3f780",
+        "name": "Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "b611574be6e6c21a",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "function 24",
+        "func": "var t=msg.payload;\nvar t1={payload:t.mySlider1}\n\nreturn t1;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 620,
+        "wires": [
+            [
+                "d08d991168d213a3"
+            ]
+        ]
+    },
+    {
+        "id": "6bf173061160ec93",
+        "type": "ui_text_input",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "size",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "c145ef9de27f6de8"
+            ]
+        ]
+    },
+    {
+        "id": "c145ef9de27f6de8",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "function 27",
+        "func": "var x=msg.payload;\nglobal.set(\"x1\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2bae3b63410d432f",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "function 28",
+        "func": "var x=msg.payload;\nglobal.set(\"b1\",x);\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 400,
+        "wires": [
+            [
+                "debug-node"
+            ]
+        ]
+    },
+    {
+        "id": "091ad8d5435a8564",
+        "type": "websocket in",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "server": "763bd871b94ae90e",
+        "client": "",
+        "x": 110,
+        "y": 560,
+        "wires": [
+            [
+                "c5110f8fedc18a54"
+            ]
+        ]
+    },
+    {
+        "id": "f3dcd481af899918",
+        "type": "json",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 410,
+        "y": 580,
+        "wires": [
+            [
+                "0d8bc29c17afddb9"
+            ]
+        ]
+    },
+    {
+        "id": "d25b74b36bbebf79",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "function 29",
+        "func": "var t=msg.payload;\nvar t1={payload:t.mySlider0}\n\nreturn t1;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 580,
+        "wires": [
+            [
+                "b9825adecec2194e"
+            ]
+        ]
+    },
+    {
+        "id": "c022cc0277869e51",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "function 30",
+        "func": "var t=msg.payload;\nvar t1={payload:t.mySlider2}\n\nreturn t1;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 660,
+        "wires": [
+            [
+                "48dd1d97a1c471d0"
+            ]
+        ]
+    },
+    {
+        "id": "0d8bc29c17afddb9",
+        "type": "switch",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "mySlider0",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "mySlider1",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "mySlider2",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 530,
+        "y": 620,
+        "wires": [
+            [
+                "d25b74b36bbebf79"
+            ],
+            [
+                "b611574be6e6c21a"
+            ],
+            [
+                "c022cc0277869e51"
+            ]
+        ]
+    },
+    {
+        "id": "c5110f8fedc18a54",
+        "type": "switch",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ping",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 290,
+        "y": 560,
+        "wires": [
+            [],
+            [
+                "f3dcd481af899918"
+            ]
+        ]
+    },
+    {
+        "id": "b9825adecec2194e",
+        "type": "debug",
+        "z": "6b46fcddd8f3f780",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "d08d991168d213a3",
+        "type": "debug",
+        "z": "6b46fcddd8f3f780",
+        "name": "debug 17",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "48dd1d97a1c471d0",
+        "type": "debug",
+        "z": "6b46fcddd8f3f780",
+        "name": "debug 18",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "inject1",
+        "type": "inject",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 480,
+        "wires": [
+            [
+                "function1"
+            ]
+        ]
+    },
+    {
+        "id": "websocket1",
+        "type": "websocket out",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "server": "server1",
+        "client": "",
+        "x": 560,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "function1",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "Data",
+        "func": "var value_from_dash= global.get(\"x1\");\nvar greenRoof= global.get(\"greenRoof\");\nvar tank1= global.get(\"tank\");\nvar pipe1= global.get(\"pipe\");\nvar motor1= global.get(\"motor\");\nvar valve1= global.get(\"valve\");\nvar cloud1= global.get(\"cloud\");\nvar sun1=global.get(\"sun\");\nvar time1=global.get(\"time\");\nvar layers1=global.get(\"layer\");\nvar temp1=global.get(\"temp\");\n\nmsg.payload = {\n    precipitation: Math.random() * 30 + 10,\n    tankFillLevel: value_from_dash,\n    plantDryness: Math.random() * 50 + 980,\n    greenRoofColorchange:greenRoof,\n    pipes:pipe1,\n    tank:tank1,\n    motor:motor1,\n    valve:valve1,\n    clouds:cloud1,\n    sun:sun1,\n    timePeriod:time1,\n    layers:layers1,\n    temp:temp1\n\n};\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 480,
+        "wires": [
+            [
+                "websocket1",
+                "debug-node"
+            ]
+        ]
+    },
+    {
+        "id": "49b12f08982a8ae3",
+        "type": "ui_slider",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "tank",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "10",
+        "step": 1,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "9ad229fdb74fb6b0"
+            ]
+        ]
+    },
+    {
+        "id": "9ad229fdb74fb6b0",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "tank",
+        "func": "var x=msg.payload;\nglobal.set(\"tank\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4dea538bba004418",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "greenRoof",
+        "func": "var x=msg.payload;\nglobal.set(\"greenRoof\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "217fcbe7823f4c0d",
+        "type": "ui_slider",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "greenRoof",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "1",
+        "max": "4",
+        "step": 1,
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "4dea538bba004418"
+            ]
+        ]
+    },
+    {
+        "id": "ba442242b003df90",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "pipe",
+        "func": "var x=msg.payload;\nglobal.set(\"pipe\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bd74fc11be0d8f27",
+        "type": "ui_slider",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "pipe",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "1",
+        "max": "4",
+        "step": 1,
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "ba442242b003df90"
+            ]
+        ]
+    },
+    {
+        "id": "fc9f221342b302ec",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "motor",
+        "func": "var x=msg.payload;\nglobal.set(\"motor\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a7cb21384d346ba2",
+        "type": "ui_slider",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "motor",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "1",
+        "step": 1,
+        "x": 470,
+        "y": 140,
+        "wires": [
+            [
+                "fc9f221342b302ec"
+            ]
+        ]
+    },
+    {
+        "id": "2f2192b27aebf284",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "valve",
+        "func": "var x=msg.payload;\nglobal.set(\"valve\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c0efccbff3e6a8b4",
+        "type": "ui_slider",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "valve",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "1",
+        "step": 1,
+        "x": 470,
+        "y": 180,
+        "wires": [
+            [
+                "2f2192b27aebf284"
+            ]
+        ]
+    },
+    {
+        "id": "259600dfd9b2631b",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "cloud",
+        "func": "var x=msg.payload;\nglobal.set(\"cloud\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b0b932db7edd59e9",
+        "type": "ui_slider",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "cloud",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "3",
+        "step": 1,
+        "x": 470,
+        "y": 220,
+        "wires": [
+            [
+                "259600dfd9b2631b"
+            ]
+        ]
+    },
+    {
+        "id": "ffebd41bb9d3eeed",
+        "type": "ui_slider",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "time",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "24",
+        "step": 1,
+        "x": 470,
+        "y": 260,
+        "wires": [
+            [
+                "338af9b450b449b1"
+            ]
+        ]
+    },
+    {
+        "id": "338af9b450b449b1",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "cloud",
+        "func": "var x=msg.payload;\nglobal.set(\"time\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d2289a7946c9017",
+        "type": "ui_slider",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "sun",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "3",
+        "step": 1,
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "f87636bca53e9204"
+            ]
+        ]
+    },
+    {
+        "id": "f87636bca53e9204",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "cloud",
+        "func": "var x=msg.payload;\nglobal.set(\"sun\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26b1490f44d44d49",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "cloud",
+        "func": "var x=msg.payload;\nglobal.set(\"layer\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bb8f2c53bf3c1d11",
+        "type": "ui_slider",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "layers",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "10",
+        "step": 1,
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "26b1490f44d44d49"
+            ]
+        ]
+    },
+    {
+        "id": "5e4f7d1c061f0645",
+        "type": "function",
+        "z": "6b46fcddd8f3f780",
+        "name": "cloud",
+        "func": "var x=msg.payload;\nglobal.set(\"temp\",x);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "90e39b45603e21a2",
+        "type": "ui_slider",
+        "z": "6b46fcddd8f3f780",
+        "name": "",
+        "label": "temp",
+        "tooltip": "",
+        "group": "78ad85b1763e18b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "20",
+        "max": "40",
+        "step": "0.1",
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "5e4f7d1c061f0645"
+            ]
+        ]
+    },
+    {
+        "id": "78ad85b1763e18b6",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "8f1e4889016aee7f",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "763bd871b94ae90e",
+        "type": "websocket-listener",
+        "path": "/ws/data",
+        "wholemsg": "false"
+    },
+    {
+        "id": "server1",
+        "type": "websocket-listener",
+        "path": "/ws",
+        "wholemsg": "false"
+    },
+    {
+        "id": "8f1e4889016aee7f",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
