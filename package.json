@@ -1,0 +1,11 @@
+{
+  "name": "node-red-project",
+  "version": "1.0.0",
+  "description": "My Node-RED Project",
+  "dependencies": {
+    "node-red": "^2.2.2"
+  },
+  "scripts": {
+    "start": "node-red"
+  }
+}
